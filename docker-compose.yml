@@ -34,7 +34,7 @@ services:
       context: ./backend/src/db
       dockerfile: Dockerfile
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -54,3 +54,6 @@ services:
       - backend
     ports:
       - 3000:3000
+
+volumes:
+  postgres-db:
