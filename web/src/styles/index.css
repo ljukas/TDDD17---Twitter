@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.tweet-info {
+  max-width: 400px;
+}
+
+/* Add some space between each tweet info */
+.tweet-info-div div {
+  margin-bottom: 8px;
+}
+
+/* Bold tweet info headers */
+.tweet-info-div div span {
+  font-weight: bold;
+}
+
+.pie-wrapper {
+  text-align: center;
+}
+
+/* Add some space between pie-header and pie-chart */
+.pie-header-wrapper {
+  margin-bottom: 15px;
+}
+
+.pie-header-red {
+  display: inline-block;
+  height: 12px;
+  width: 40px;
+  margin: 0px 10px;
+  background-color: #f7464a;
+}
+
+.pie-header-green {
+  display: inline-block;
+  height: 12px;
+  width: 40px;
+  margin: 0px 10px;
+  background-color: #46bfbd;
+}
+
+.pie-header-yellow {
+  display: inline-block;
+  height: 12px;
+  width: 40px;
+  margin: 0px 10px;
+  background-color: #ffc870;
+}

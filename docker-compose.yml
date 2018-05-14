@@ -1,0 +1,56 @@
+#
+# DEV VERSION
+# Use docker-compose.prod for production
+#
+version: "3.4"
+
+services:
+  backend:
+    container_name: backend
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - './backend:/usr/src/app'
+      - './backend/node_modules:/usr/src/app/node_modules'
+    environment:
+      - NODE_ENV=development
+      - DATABASE_HOST=twitter-db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_DB=twitter_dev
+      - DATABASE_PORT=5432
+      - DATABASE_DIALECT=postgres
+    depends_on:
+      - twitter-db
+    ports:
+      - 3001:3000
+
+  twitter-db:
+    container_name: twitter-db
+    restart: always
+    build:
+      context: ./backend/src/db
+      dockerfile: Dockerfile
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  web:
+    container_name: web
+    restart: always
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - './web:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    depends_on:
+      - backend
+    ports:
+      - 3000:3000
