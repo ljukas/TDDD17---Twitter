@@ -12,8 +12,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - './backend:/usr/src/app'
-      - './backend/node_modules:/usr/src/app/node_modules'
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
     environment:
       - NODE_ENV=development
       - DATABASE_HOST=twitter-db
@@ -48,8 +48,8 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - './web:/usr/src/app'
-      - '/usr/src/app/node_modules'
+      - ./web:/usr/src/app
+      - /usr/src/app/node_modules
     depends_on:
       - backend
     ports:
