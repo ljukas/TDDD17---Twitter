@@ -76,8 +76,8 @@ class TwitterList extends Component {
     }); // => { 'USA': 1, 'Sweden': 2, 'Russia': 1} */
 
     /* Transform locations into an array */
-    var sortedLocationsArray = [];
-    for (var country in locationsCount) {
+    let sortedLocationsArray = [];
+    for (let country in locationsCount) {
       sortedLocationsArray.push([country, locationsCount[country]]);
     }
 
@@ -89,12 +89,10 @@ class TwitterList extends Component {
     // Transform sorted locations back into an object
     const sortedLocations = {};
     sortedLocationsArray.map(country => {
-      if (country[1] > 1 && country[0] != '') {
+      if (country[1] > 1 && country[0] !== '') {
         sortedLocations[country[0]] = country[1];
       }
     });
-
-    console.log('Sorted locations:', sortedLocations);
 
     const locationData = {
       labels: Object.keys(sortedLocations),
@@ -120,27 +118,24 @@ class TwitterList extends Component {
     }
 
     let retweeterData = [];
-    if (type == 'followers') {
-      console.log('followers');
+    if (type === 'followers') {
       retweeterData = this.props.retweeters.map(retweet => {
         return retweet.followers_count;
       });
-    } else if (type == 'friends') {
-      console.log('friends');
+    } else if (type === 'friends') {
       retweeterData = this.props.retweeters.map(retweet => {
         return retweet.friends_count;
       });
-    } else if (type == 'statuses') {
-      console.log('statuses');
+    } else if (type === 'statuses') {
       retweeterData = this.props.retweeters.map(retweet => {
         return retweet.statuses_count;
       });
     }
 
-    console.log(retweeterData);
-    var red = 0;
-    var green = 0;
-    var yellow = 0;
+    let red = 0;
+    let green = 0;
+    let yellow = 0;
+    // Count the data of different intervals
     retweeterData.map(function(number) {
       if (number < 100) {
         red++;
@@ -180,7 +175,7 @@ class TwitterList extends Component {
           <div className="pie-header-green" />
           <span>100 &lt; x &lt; 1000</span>
           <div className="pie-header-yellow" />
-          <span>1000 &lt; x</span>
+          <span>x &gt; 1000</span>
         </div>
         <div>
           <Pie data={pieData} width="500" height="250" />

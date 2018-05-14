@@ -21,7 +21,6 @@ export function fetchTweet(tweetId) {
 
 export function fetchRetweeters(tweetId) {
   const url = `${ROOT_URL}/tweet/${tweetId}/retweeters`;
-  console.log(url);
   const request = axios.get(url);
 
   return {
