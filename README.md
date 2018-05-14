@@ -6,7 +6,7 @@ The first thing to do is the create an app at Twitter so you get the four API-ke
 
 This project runs using docker containers, the easiest way to run it is to run the docker-compose file at the top. It will setup everything for you.
 
-After this is done, you need to enter the backend-container and run the command: _sequelize db:migrate_ to setup the database. When this is done you can start to examine tweets live.
+After this is done, you need to enter the backend-container and run the command: `sequelize db:migrate` to setup the database. When this is done you can start to examine tweets live.
 
 The frontend can be accessed at _http://localhost:3000_.
 
