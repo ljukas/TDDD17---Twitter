@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TwitterList from '../containers/twitter_list';
 import { connect } from 'react-redux';
 import { fetchTweet, fetchRetweeters, initSubscription } from '../actions';
 
@@ -25,9 +24,6 @@ class SearchBar extends Component {
     this.searchSubmit = this.searchSubmit.bind(this);
   }
 
-  // componentDidMount() {
-  //   const id = "993005360050003968";
-  // }
   searchSubmit(event) {
     event.preventDefault();
     if (this.state.checked) {
